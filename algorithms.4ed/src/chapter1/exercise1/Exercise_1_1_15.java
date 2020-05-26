@@ -1,6 +1,9 @@
 package chapter1.exercise1;
 
+import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
+
+import java.util.Arrays;
 
 /**
  * @author Venkateshwara Gowru
@@ -14,19 +17,28 @@ import edu.princeton.cs.algs4.StdRandom;
 public class Exercise_1_1_15 {
     public static int[] histogram(int[] a, int M) {
         int[] b = new int[M];
-
+        for (int i = 0; i < M; i++) {
+            b[a[i]]++;
+        }
         return b;
     }
 
     public static int[] generateRandomArray(int N) {
         int[] a = new int[N];
         for (int i = 0; i < N; i++) a[i] = StdRandom.uniform(0, N);
+        StdOut.println(Arrays.toString(a));
         return a;
     }
 
     public static void main(String[] args) {
-        int N = StdRandom.uniform(0, 15);
-        int M = StdRandom.uniform(0, 25);
-        histogram(generateRandomArray(N), M);
+        int N = 100;
+        int M = 100;
+        int sum = 0;
+        int[] b = histogram(generateRandomArray(N), M);
+        StdOut.println(Arrays.toString(b));
+        for (int i = 0; i < b.length; i++) {
+            sum += b[i];
+        }
+        StdOut.println(sum);
     }
 }
